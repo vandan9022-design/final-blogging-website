@@ -1,0 +1,847 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="InkSpace - A modern blogging platform for technology, photography, travel, business and programming.">
+
+    <meta name="keywords"
+        content="blog, technology, photography, travel, programming, business">
+
+    <meta name="author" content="InkSpace">
+
+    <title>InkSpace | Modern Blogging Platform</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         LOADING SCREEN
+    ====================================================== -->
+
+    <div id="loader" class="loader">
+        <div class="loader-spinner"></div>
+        <p>Loading InkSpace...</p>
+    </div>
+
+
+    <!-- =====================================================
+         TOAST NOTIFICATION
+    ====================================================== -->
+
+    <div id="toast" class="toast">
+        <span id="toastMessage">Success!</span>
+    </div>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <header class="header">
+
+        <nav class="navbar container">
+
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <span class="logo-icon">I</span>
+                <span>Ink<span>Space</span></span>
+            </a>
+
+
+            <!-- Desktop Navigation -->
+
+            <div class="nav-links" id="navLinks">
+
+                <a href="index.html" class="nav-link active">
+                    Home
+                </a>
+
+                <a href="#latest" class="nav-link">
+                    Latest
+                </a>
+
+                <a href="#categories" class="nav-link">
+                    Categories
+                </a>
+
+                <a href="about.html" class="nav-link">
+                    About
+                </a>
+
+                <a href="contact.html" class="nav-link">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <!-- Navigation Actions -->
+
+            <div class="nav-actions">
+
+                <!-- Search -->
+                <button
+                    class="icon-btn"
+                    id="searchBtn"
+                    aria-label="Search">
+                    🔍
+                </button>
+
+
+                <!-- Dark Mode -->
+                <button
+                    class="icon-btn"
+                    id="themeBtn"
+                    aria-label="Toggle theme">
+                    🌙
+                </button>
+
+
+                <!-- Create Blog -->
+                <a
+                    href="create-blog.html"
+                    class="create-btn">
+                    + Create
+                </a>
+
+
+                <!-- Mobile Menu -->
+                <button
+                    class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Open menu">
+                    ☰
+                </button>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         SEARCH OVERLAY
+    ====================================================== -->
+
+    <div class="search-overlay" id="searchOverlay">
+
+        <div class="search-container">
+
+            <button
+                class="close-search"
+                id="closeSearch">
+                ✕
+            </button>
+
+            <h2>Search Articles</h2>
+
+            <p>
+                Find articles, stories and tutorials.
+            </p>
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search blogs..."
+                    autocomplete="off">
+
+                <button id="searchSubmit">
+                    🔍
+                </button>
+
+            </div>
+
+            <div id="searchResults" class="search-results"></div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         HERO SECTION
+    ====================================================== -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-background"></div>
+
+            <div class="container hero-content">
+
+                <div class="hero-text">
+
+                    <span class="hero-label">
+                        ✦ STORIES THAT MATTER
+                    </span>
+
+                    <h1>
+                        Ideas worth
+                        <span>reading.</span>
+                    </h1>
+
+                    <p>
+                        Discover thoughtful stories, practical tutorials,
+                        creative ideas and inspiring experiences from
+                        writers around the world.
+                    </p>
+
+
+                    <div class="hero-buttons">
+
+                        <a
+                            href="#latest"
+                            class="primary-btn">
+                            Explore Articles →
+                        </a>
+
+                        <a
+                            href="create-blog.html"
+                            class="secondary-btn">
+                            Write a Story
+                        </a>
+
+                    </div>
+
+
+                    <!-- Hero Stats -->
+
+                    <div class="hero-stats">
+
+                        <div class="stat">
+                            <strong id="articleCount">
+                                0
+                            </strong>
+                            <span>Articles</span>
+                        </div>
+
+                        <div class="stat">
+                            <strong>
+                                5+
+                            </strong>
+                            <span>Categories</span>
+                        </div>
+
+                        <div class="stat">
+                            <strong>
+                                10K+
+                            </strong>
+                            <span>Readers</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Featured Hero Card -->
+
+                <div class="hero-featured" id="heroFeatured">
+
+                    <!-- JavaScript inserts featured article -->
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CATEGORY SECTION
+        ================================================== -->
+
+        <section
+            class="categories-section"
+            id="categories">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            EXPLORE
+                        </span>
+
+                        <h2>
+                            Browse by category
+                        </h2>
+
+                    </div>
+
+                    <p>
+                        Find stories based on what interests you.
+                    </p>
+
+                </div>
+
+
+                <div class="category-grid">
+
+                    <button
+                        class="category-card"
+                        data-category="Technology">
+
+                        <span class="category-icon">
+                            💻
+                        </span>
+
+                        <h3>
+                            Technology
+                        </h3>
+
+                        <p>
+                            AI, gadgets & innovation
+                        </p>
+
+                    </button>
+
+
+                    <button
+                        class="category-card"
+                        data-category="Photography">
+
+                        <span class="category-icon">
+                            📷
+                        </span>
+
+                        <h3>
+                            Photography
+                        </h3>
+
+                        <p>
+                            Capture better stories
+                        </p>
+
+                    </button>
+
+
+                    <button
+                        class="category-card"
+                        data-category="Travel">
+
+                        <span class="category-icon">
+                            ✈️
+                        </span>
+
+                        <h3>
+                            Travel
+                        </h3>
+
+                        <p>
+                            Places & experiences
+                        </p>
+
+                    </button>
+
+
+                    <button
+                        class="category-card"
+                        data-category="Business">
+
+                        <span class="category-icon">
+                            💼
+                        </span>
+
+                        <h3>
+                            Business
+                        </h3>
+
+                        <p>
+                            Ideas & entrepreneurship
+                        </p>
+
+                    </button>
+
+
+                    <button
+                        class="category-card"
+                        data-category="Programming">
+
+                        <span class="category-icon">
+                            👨‍💻
+                        </span>
+
+                        <h3>
+                            Programming
+                        </h3>
+
+                        <p>
+                            Code & development
+                        </p>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FEATURED ARTICLE
+        ================================================== -->
+
+        <section class="featured-section">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            EDITOR'S PICK
+                        </span>
+
+                        <h2>
+                            Featured story
+                        </h2>
+
+                    </div>
+
+                    <a
+                        href="#latest"
+                        class="text-link">
+                        View all →
+                    </a>
+
+                </div>
+
+
+                <div
+                    class="featured-article"
+                    id="featuredArticle">
+
+                    <!-- Dynamic content -->
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             LATEST ARTICLES
+        ================================================== -->
+
+        <section
+            class="latest-section"
+            id="latest">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            FRESH FROM THE BLOG
+                        </span>
+
+                        <h2>
+                            Latest articles
+                        </h2>
+
+                    </div>
+
+
+                    <!-- Category Filter -->
+
+                    <div class="filter-wrapper">
+
+                        <select
+                            id="categoryFilter"
+                            class="category-filter">
+
+                            <option value="all">
+                                All Categories
+                            </option>
+
+                            <option value="Technology">
+                                Technology
+                            </option>
+
+                            <option value="Photography">
+                                Photography
+                            </option>
+
+                            <option value="Travel">
+                                Travel
+                            </option>
+
+                            <option value="Business">
+                                Business
+                            </option>
+
+                            <option value="Programming">
+                                Programming
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Blog Grid -->
+
+                <div
+                    class="blog-grid"
+                    id="blogGrid">
+
+                    <!-- JavaScript creates blog cards -->
+
+                </div>
+
+
+                <!-- No Results -->
+
+                <div
+                    id="noResults"
+                    class="no-results"
+                    style="display:none;">
+
+                    <div class="no-results-icon">
+                        🔎
+                    </div>
+
+                    <h3>
+                        No articles found
+                    </h3>
+
+                    <p>
+                        Try searching for something else.
+                    </p>
+
+                </div>
+
+
+                <!-- Load More -->
+
+                <div class="load-more-wrapper">
+
+                    <button
+                        id="loadMoreBtn"
+                        class="secondary-btn">
+                        Load More Articles
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             TRENDING SECTION
+        ================================================== -->
+
+        <section class="trending-section">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            MOST READ
+                        </span>
+
+                        <h2>
+                            Trending this week
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="trending-grid"
+                    id="trendingGrid">
+
+                    <!-- Dynamic trending articles -->
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             NEWSLETTER
+        ================================================== -->
+
+        <section class="newsletter-section">
+
+            <div class="container">
+
+                <div class="newsletter">
+
+                    <div class="newsletter-content">
+
+                        <span class="newsletter-icon">
+                            ✉
+                        </span>
+
+                        <h2>
+                            Get stories in your inbox.
+                        </h2>
+
+                        <p>
+                            Subscribe to our newsletter and receive
+                            interesting articles, tutorials and stories
+                            every week.
+                        </p>
+
+                    </div>
+
+
+                    <form
+                        id="newsletterForm"
+                        class="newsletter-form">
+
+                        <input
+                            type="email"
+                            id="newsletterEmail"
+                            placeholder="Enter your email address"
+                            required>
+
+                        <button
+                            type="submit"
+                            class="primary-btn">
+                            Subscribe
+                        </button>
+
+                    </form>
+
+
+                    <small>
+                        No spam. Unsubscribe anytime.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+
+                <!-- Footer About -->
+
+                <div class="footer-about">
+
+                    <a
+                        href="index.html"
+                        class="logo footer-logo">
+
+                        <span class="logo-icon">
+                            I
+                        </span>
+
+                        <span>
+                            Ink<span>Space</span>
+                        </span>
+
+                    </a>
+
+                    <p>
+                        A place where ideas become stories.
+                        Read, write and share what matters to you.
+                    </p>
+
+
+                    <!-- Social Links -->
+
+                    <div class="social-links">
+
+                        <a
+                            href="#"
+                            aria-label="Instagram">
+                            Instagram
+                        </a>
+
+                        <a
+                            href="#"
+                            aria-label="Twitter">
+                            Twitter
+                        </a>
+
+                        <a
+                            href="#"
+                            aria-label="GitHub">
+                            GitHub
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Quick Links -->
+
+                <div class="footer-column">
+
+                    <h3>
+                        Explore
+                    </h3>
+
+                    <a href="#latest">
+                        Latest Articles
+                    </a>
+
+                    <a href="#categories">
+                        Categories
+                    </a>
+
+                    <a href="#trending">
+                        Trending
+                    </a>
+
+                    <a href="create-blog.html">
+                        Write a Blog
+                    </a>
+
+                </div>
+
+
+                <!-- Categories -->
+
+                <div class="footer-column">
+
+                    <h3>
+                        Categories
+                    </h3>
+
+                    <a href="#"
+                       data-footer-category="Technology">
+                        Technology
+                    </a>
+
+                    <a href="#"
+                       data-footer-category="Photography">
+                        Photography
+                    </a>
+
+                    <a href="#"
+                       data-footer-category="Travel">
+                        Travel
+                    </a>
+
+                    <a href="#"
+                       data-footer-category="Business">
+                        Business
+                    </a>
+
+                </div>
+
+
+                <!-- Company -->
+
+                <div class="footer-column">
+
+                    <h3>
+                        Company
+                    </h3>
+
+                    <a href="about.html">
+                        About Us
+                    </a>
+
+                    <a href="contact.html">
+                        Contact
+                    </a>
+
+                    <a href="#">
+                        Privacy Policy
+                    </a>
+
+                    <a href="#">
+                        Terms & Conditions
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Bottom Footer -->
+
+            <div class="footer-bottom">
+
+                <p>
+                    © <span id="currentYear"></span>
+                    InkSpace. All rights reserved.
+                </p>
+
+                <p>
+                    Made with ❤️ for readers and writers.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
